@@ -1,4 +1,4 @@
-import { productClient } from "./clients/product-client";
+import axios from 'axios'
 
 /**
  *
@@ -7,6 +7,8 @@ import { productClient } from "./clients/product-client";
  *  @const ProductApi
  *
  */
+let baseURL = `https://dummyjson.com/products`;
+
 export const ProductApi = {
   /**
    *  list of categories of products
@@ -14,7 +16,7 @@ export const ProductApi = {
    *  @returns Promise possible data [''] array of product objects
    */
   category: () => {
-    return productClient.get("/categories");
+    return axios.get(baseURL + "/categories");
   },
 
   /**
@@ -23,7 +25,7 @@ export const ProductApi = {
    *  @returns Promise possible data [''] array of product objects
    */
   product: (productName) => {
-    return productClient.get(`/search?q=${productName}`);
+    return axios.get(baseURL + `/search?q=${productName}`);
   },
 
   /**
@@ -33,7 +35,7 @@ export const ProductApi = {
    * @returns Promise possible data [''] array of product objects
    */
   paginatedProducts: (skip, limit) => {
-    return productClient.get(`?limit=${limit}&skip${skip}`);
+    return axios.get(baseURL + `?limit=${limit}&skip${skip}`);
   },
 
   /**
@@ -42,7 +44,7 @@ export const ProductApi = {
    * @returns Promise possible data [''] array of product objects
    */
   productByCategory: (category) => {
-    return productClient.get(`/category/${category}?`);
+    return axios.get(baseURL + `/category/${category}?`);
   },
 };
 
