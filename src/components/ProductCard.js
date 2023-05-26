@@ -11,7 +11,6 @@ const MAX_RATING = 5; //max rating of a product from what ive seen is 5, this ca
 function ProductCard(props) {
   return (
     <Popup
-      key={props.product.id}
       trigger={
         <Card>
           <Card.Content>

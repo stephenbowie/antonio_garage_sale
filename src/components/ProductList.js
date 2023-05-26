@@ -15,8 +15,8 @@ function ProductList(props) {
         <div>{GENERAL_LABELS.NO_AVAILABLE_DATA}</div>
       ) : (
         <Card.Group itemsPerRow={props.itemsPerRow}>
-          {props.products.map((product) => {
-            return <ProductCard product={product}></ProductCard>;
+          {props.products.map((product, index) => {
+            return <ProductCard key={index} product={product}></ProductCard>;
           })}
         </Card.Group>
       )}
