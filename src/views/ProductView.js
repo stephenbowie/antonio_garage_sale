@@ -18,15 +18,11 @@ import { PRODUCT_LABELS, GENERAL_LABELS } from "../translations/english";
 function ProductView() {
   let DATA_PAGE_INCREMENT = 20; //what's needed for now, will make this a props if we will decide to make this a reusable component
   let [products, setProducts] = useState([]);
-  let [categoryOptions, setCategoryOptions] = useState([]);
   let [limit, setLimit] = useState(DATA_PAGE_INCREMENT);
   let [canLoadMoreDate, setCanLoadMoreData] = useState(false);
 
   useEffect(() => {
     initialize();
-    ProductApi.category().then((res) => {
-      setCategoryOptions(res.data);
-    });
   }, []);
 
   
@@ -72,7 +68,6 @@ function ProductView() {
               <Header as="h2">{PRODUCT_LABELS.filters.searchByCategory}</Header>
               <ProductCategoryDropDown
                 handleSelect={filterByCategory}
-                categoryOptions={categoryOptions}
               ></ProductCategoryDropDown>
             </div>
             <div>

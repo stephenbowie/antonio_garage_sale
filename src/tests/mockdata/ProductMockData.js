@@ -69,3 +69,63 @@ export const PRODUCT_MOCK_DATA = {
 
   ],
 };
+
+export const CATEGORIES = {
+  "data": [
+      "smartphones",
+      "laptops",
+      "fragrances",
+      "skincare",
+      "groceries",
+      "home-decoration",
+      "furniture",
+      "tops",
+      "womens-dresses",
+      "womens-shoes",
+      "mens-shirts",
+      "mens-shoes",
+      "mens-watches",
+      "womens-watches",
+      "womens-bags",
+      "womens-jewellery",
+      "sunglasses",
+      "automotive",
+      "motorcycle",
+      "lighting"
+  ],
+  "status": 200,
+  "statusText": "",
+  "headers": {
+      "content-length": "272",
+      "content-type": "application/json; charset=utf-8"
+  },
+  "config": {
+      "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+      },
+      "adapter": [
+          "xhr",
+          "http"
+      ],
+      "transformRequest": [
+          null
+      ],
+      "transformResponse": [
+          null
+      ],
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "maxBodyLength": -1,
+      "env": {},
+      "headers": {
+          "Accept": "application/json, text/plain, */*"
+      },
+      "method": "get",
+      "url": "https://dummyjson.com/products/categories"
+  },
+  "request": {}
+}

@@ -1,9 +1,13 @@
+import useCategoryHook from "../hooks/useCategoryHook";
+
 /**
  * drop down that displays all the product categories
  * @param {*} props
  * @returns functional component ProductCategoryDropDown
  */
 function ProductCategoryDropDown(props) {
+  const categoryOptions = useCategoryHook();
+
   return (
     <select
       className="ui dropdown"
@@ -11,7 +15,7 @@ function ProductCategoryDropDown(props) {
         props.handleSelect(e.target.value);
       }}
     >
-      {props.categoryOptions.map((category) => {
+      {categoryOptions.map((category) => {
         return (
           <option key={category} value={category}>
             {category}
