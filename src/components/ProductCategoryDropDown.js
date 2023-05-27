@@ -10,7 +10,7 @@ function ProductCategoryDropDown(props) {
   const categoryOptions = useCategoryHook();
 
   return (
-    <select
+    <select data-testid="dropdown"
       className="ui dropdown"
       onChange={(e) => {
         props.handleSelect(e.target.value);

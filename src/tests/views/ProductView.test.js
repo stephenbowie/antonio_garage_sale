@@ -2,10 +2,12 @@ import {
   render,
   screen,
   cleanup,
+  fireEvent,
 } from "@testing-library/react";
 import ProductView from "../../views/ProductView";
 import axiosMock from "axios";
-import { PAGINATED_VALID_LIST, CATEGORIES } from "../mockdata/ProductMockData";
+import { PAGINATED_VALID_LIST, CATEGORIES, LIST_CATEGORIED } from "../mockdata/ProductMockData";
+import { async } from "q";
 
 jest.mock("axios");
 describe("ProductView", () => {
@@ -17,6 +19,8 @@ describe("ProductView", () => {
           return Promise.resolve(CATEGORIES);
         case "https://dummyjson.com/products?limit=20&skip0":
           return Promise.resolve(PAGINATED_VALID_LIST);
+        case "https://dummyjson.com/products/category/skincare?":
+          return Promise.resolve(LIST_CATEGORIED)
         default:
           return Promise.reject(new Error("not found"));
       }
@@ -30,13 +34,25 @@ describe("ProductView", () => {
       await screen.findByText("Freckle Treatment Cream- 15gm")
     ).toBeVisible();
     expect(await axiosMock.get).toHaveBeenCalledTimes(2);
+    
   });
 
-  it("when drop down filter change", () => {
+  it("when screen was loaded and some products are shown, drop down filter change triggers, then /category endpoint has been called and only selected products are shown", async() => {
+    const { getByTestId } = render(<ProductView />);
+    expect(await screen.findByText("iPhone 9")).toBeVisible();
+    expect(await screen.findByText("Freckle Treatment Cream- 15gm")).toBeVisible();
+    expect(await axiosMock.get).toHaveBeenCalledTimes(2);
+
+    expect(await screen.findByText("iPhone 9")).toBeVisible();
+    const dropdown = getByTestId('dropdown');
+    expect(await dropdown).toBeVisible();
+  });
+
+  it("when name input change, then /q?title= endpoint has been called and only products with same name are shown", () => {
     expect(true).toBeTruthy();
   });
 
-  it("when name input change", () => {
+  it("when looking at bottom of screen, then product api is called again, loading message appears, and another 20 products will be shown", () => {
     expect(true).toBeTruthy();
   });
 });

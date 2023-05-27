@@ -45,6 +45,7 @@ function ProductView() {
     setTimeout(() => {
       ProductApi.paginatedProducts(limit, limit + DATA_PAGE_INCREMENT).then(
         (res) => {
+          
           setProducts(res.data.products);
           setCanLoadMoreData(products.length < res.data.total);
         }
@@ -55,6 +56,7 @@ function ProductView() {
 
   const filterByCategory = (category) => {
     ProductApi.productByCategory(category).then((res) => {
+      console.log('product categoried', res)
       setProducts(res.data.products);
     });
     setCanLoadMoreData(false);
@@ -98,6 +100,7 @@ function ProductView() {
           </Card.Content>
         </Segment>
       </Container>
+      <div data-testid="end" ></div>
       <Container textAlign="left" fluid>
         <InfiniteScroll
           dataLength={products.length}
