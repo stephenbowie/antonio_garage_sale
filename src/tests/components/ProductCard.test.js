@@ -5,8 +5,8 @@ import ProductCard from "../../components/ProductCard";
  * this is not a needed test, just for my self practice, it's been a while :)
  *
  */
-describe("Test if Product Card has proper thumbnail data", () => {
-  it("display product with good thumbnail", () => {
+describe("Product Card", () => {
+  it("when initial load and thumbnail has data, then display product with good thumbnail", () => {
     const goodProductDetails = {
       id: 1,
       title: "iPhone 9",
@@ -24,7 +24,7 @@ describe("Test if Product Card has proper thumbnail data", () => {
     expect(screen.getByRole("img")).toBeInTheDocument();
   });
 
-  it("display product with bad thumbnail", () => {
+  it("when initial load and thumbnail is blank, display product with bad thumbnail", () => {
     const goodProductDetails = {
       id: 1,
       title: "iPhone 9",

@@ -18,7 +18,7 @@ describe("ProductList", () => {
       }
     });
   });
-  it("display product cards when product data are existing", async () => {
+  it("when product data is existing, then display product cards", async () => {
     const filterByCategory = (category) => {
       console.log("filterByCategory was triggered");
     };
@@ -32,7 +32,7 @@ describe("ProductList", () => {
     expect(await screen.findByText("laptops")).toBeVisible();
   });
 
-  it("when rendering calls api products/categories", async () => {
+  it("after initial load, then calls api products/categories", async () => {
     const filterByCategory = (category) => {
       console.log("filterByCategory was triggered");
     };
