@@ -15,8 +15,16 @@ import ProductList from "../components/ProductList";
 import ProductCategoryDropDown from "../components/ProductCategoryDropDown";
 import { PRODUCT_LABELS, GENERAL_LABELS } from "../translations/english";
 
+/**
+ * 
+ *  @author: Antonio Villasenor 
+ *  @fileOverview : product view displays products and loads more data when you scroll end of page
+ *  @module ProductView
+ *  @todo for now since this is not a reusable component, this is a proper implementation with usage of <InfiniteScroll> 
+ *          but to make this a reusable component, see possible implementation below, if we want to deprecate usage of <InfiniteScroll>
+ */
 function ProductView() {
-  let DATA_PAGE_INCREMENT = 20; //what's needed for now, will make this a props if we will decide to make this a reusable component
+  let DATA_PAGE_INCREMENT = 20;
   let [products, setProducts] = useState([]);
   let [limit, setLimit] = useState(DATA_PAGE_INCREMENT);
   let [canLoadMoreDate, setCanLoadMoreData] = useState(false);
@@ -113,27 +121,7 @@ function ProductView() {
 }
 export default ProductView;
 /**
- * 
- *  @author: Antonio Villasenor 
- *  @fileOverview :
-        * Using dummyJSON (https://dummyjson.com/docs/products) display a list of products, where following is shown
-                for each product:
-                • Thumbnail
-                • Title
-                • Price
-                • Description
-                • Brand
-                • Category
-        * Initially, the first 20 products should be loaded, then once the user has scrolled down to the end of the list
-            the next 20 are loaded and so on until all products are loaded
-            User should be able to filter the list by different product categories
-            User should be able to search products via free text field
-            
- *  @module ProductView
- * 
- *  @todo for now since this is not a reusable component, this is a proper implementation with usage of <InfiniteScroll> 
- *          but to make this a reusable component,
- *          we should limit the size of the component and implement the proper way using ref or simpler implementation (like below)
+   we should limit the size of the component and implement the proper way using ref or simpler implementation (like below)
                 const handleScroll = (e) => {
                     const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
                       if (bottom) { 

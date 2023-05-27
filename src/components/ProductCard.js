@@ -1,12 +1,13 @@
 import { Card, Image, Popup, Rating } from "semantic-ui-react";
 import { PRODUCT_LABELS } from "../translations/english";
 import { isEmptyOrUndefined } from "../utils/stringUtils";
+import PropTypes from 'prop-types';
 const MAX_RATING = 5; //max rating of a product from what ive seen is 5, this can be adjusted in the future, for now this is enough
 
 /**
  * A card display of a Product
- * @param {*} props
- * @returns functional component ProductCard
+ * @param object
+ * @returns ProductCard
  */
 function ProductCard(props) {
   return (
@@ -55,3 +56,7 @@ function ProductCard(props) {
 }
 
 export default ProductCard;
+
+ProductCard.propTypes = {
+  product: PropTypes.object
+};

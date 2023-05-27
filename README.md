@@ -17,6 +17,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Launches the test runner in the interactive watch mode.
 
+### `npm run lint`
+I added a lazy lint, (it's fine for now)
+runs lint on the codebase even tests.js files
+
+Launches the test runner in the interactive watch mode.
+
 ### notes from the author
 
  - the app is designed to do the following : 

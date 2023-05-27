@@ -1,9 +1,10 @@
 import useCategoryHook from "../hooks/useCategoryHook";
+import PropTypes from 'prop-types';
 
 /**
  * drop down that displays all the product categories
- * @param {*} props
- * @returns functional component ProductCategoryDropDown
+ * @param func
+ * @returns ProductCategoryDropDown
  */
 function ProductCategoryDropDown(props) {
   const categoryOptions = useCategoryHook();
@@ -26,3 +27,6 @@ function ProductCategoryDropDown(props) {
   );
 }
 export default ProductCategoryDropDown;
+ProductCategoryDropDown.propTypes = {
+  product: PropTypes.func
+};

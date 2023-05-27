@@ -1,4 +1,4 @@
-import { render, screen, act, cleanup } from "@testing-library/react";
+import { render, screen, } from "@testing-library/react";
 import ProductCategoryDropDown from "../../components/ProductCategoryDropDown";
 import axiosMock from "axios";
 import { CATEGORIES } from "../mockdata/ProductMockData";

@@ -2,11 +2,12 @@ import { Fragment } from "react";
 import { Card } from "semantic-ui-react";
 import { GENERAL_LABELS } from "../translations/english";
 import ProductCard from "./ProductCard";
+import PropTypes from 'prop-types';
 
 /**
  * drop down that displays products in a card group manner
- * @param {*} props
- * @returns functional component ProductList
+ * @param array props
+ * @returns ProductList
  */
 function ProductList(props) {
   return (
@@ -25,3 +26,6 @@ function ProductList(props) {
 }
 
 export default ProductList;
+ProductList.propTypes = {
+  products: PropTypes.array
+};

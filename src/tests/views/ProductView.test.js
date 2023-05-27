@@ -1,9 +1,6 @@
 import {
-  act,
   render,
   screen,
-  renderHook,
-  getByTestId,
   cleanup,
 } from "@testing-library/react";
 import ProductView from "../../views/ProductView";
