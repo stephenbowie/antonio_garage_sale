@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ProductCard from "../../components/ProductCard";
+import { PRODUCT_LABELS } from "../../translations/english";
+import { goodProductDetails, invalidProductDetails } from "../mockdata/ProductMockData";
 
 /**
  * this is not a needed test, just for my self practice, it's been a while :)
@@ -7,40 +9,14 @@ import ProductCard from "../../components/ProductCard";
  */
 describe("Product Card", () => {
   it("when initial load and thumbnail has data, then display product with good thumbnail", () => {
-    const goodProductDetails = {
-      id: 1,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
-      images: ["...", "...", "..."],
-    };
     render(<ProductCard product={goodProductDetails}></ProductCard>);
     expect(screen.getByRole("img")).toBeInTheDocument();
   });
 
   it("when initial load and thumbnail is blank, display product with bad thumbnail", () => {
-    const goodProductDetails = {
-      id: 1,
-      title: "iPhone 9",
-      description: "An apple mobile which is nothing like apple",
-      price: 549,
-      discountPercentage: 12.96,
-      rating: 4.69,
-      stock: 94,
-      brand: "Apple",
-      category: "smartphones",
-      thumbnail: "",
-      images: ["...", "...", "..."],
-    };
-    render(<ProductCard product={goodProductDetails}></ProductCard>);
+    render(<ProductCard product={invalidProductDetails}></ProductCard>);
     const thumbnailUnableToDisplay = screen.getByText(
-      "no product thumbnail available"
+      PRODUCT_LABELS.card.productThumbNailAvailable
     );
     expect(thumbnailUnableToDisplay).toBeInTheDocument();
   });

@@ -1,33 +1,17 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axiosMock from "axios";
 import { GENERAL_LABELS, PRODUCT_LABELS } from "../../translations/english";
 import ProductView from "../../views/ProductView";
-import {
-  CATEGORIES,
-  HP_PRODUCT,
-  LIST_CATEGORIED,
-  PAGINATED_VALID_LIST,
-} from "../mockdata/ProductMockData";
+import { mockProductApi_RETURN_SUCCESSFUL, mockProductApi_RETURN_FAIL } from "../mockapi/api_mock_product";
 
 jest.mock("axios");
 describe("ProductView", () => {
-  afterEach(cleanup);
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   beforeEach(() => {
-    axiosMock.get.mockImplementation((url) => {
-      switch (url) {
-        case "https://dummyjson.com/products/categories":
-          return Promise.resolve(CATEGORIES);
-        case "https://dummyjson.com/products?limit=20&skip0":
-          return Promise.resolve(PAGINATED_VALID_LIST);
-        case "https://dummyjson.com/products/category/tops?":
-          return Promise.resolve(LIST_CATEGORIED);
-        case "https://dummyjson.com/products/search?q=iphone":
-          return Promise.resolve(HP_PRODUCT);
-        default:
-          return Promise.reject(new Error("not found"));
-      }
-    });
+    mockProductApi_RETURN_SUCCESSFUL();
   });
 
   it("when initial load the 2 apis are being called and product id 1 to twenty are displayed, then some cards are loaded and category and product endpoint will be called", async () => {
@@ -78,18 +62,11 @@ describe("ProductView", () => {
 });
 
 describe("apis are down", () => {
-  afterEach(cleanup);
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   beforeEach(() => {
-    axiosMock.get.mockImplementation((url) => {
-      switch (url) {
-        case "https://dummyjson.com/products/categories":
-          return Promise.reject(new Error("not found"));
-        case "https://dummyjson.com/products?limit=20&skip0":
-          return Promise.reject(new Error("not found"));
-        default:
-          return Promise.reject(new Error("not found"));
-      }
-    });
+    mockProductApi_RETURN_FAIL();
   });
   it("when category service is down, then display filter not available and expect product and category endpoint called", async () => {
     render(<ProductView />);

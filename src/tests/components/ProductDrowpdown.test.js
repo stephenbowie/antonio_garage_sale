@@ -42,7 +42,7 @@ describe("ProductList", () => {
         handleSelect={filterByCategory}
       ></ProductCategoryDropDown>
     );
-    expect(await screen.findByText("laptops")).toBeVisible();
+    expect(await screen.findByText(CATEGORIES.data[1])).toBeVisible();
     expect(axiosMock.get).toHaveBeenCalled();
   });
 });

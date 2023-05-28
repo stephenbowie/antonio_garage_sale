@@ -672,7 +672,7 @@ export const LIST_CATEGORIED = {
   request: {},
 };
 
-export const HP_PRODUCT = {
+export const IPHONE_PRODUCT = {
   data: {
     products: [
       {
@@ -683,8 +683,8 @@ export const HP_PRODUCT = {
         discountPercentage: 6.18,
         rating: 4.43,
         stock: 89,
-        brand: "HP Pavilion",
-        category: "laptops",
+        brand: "iPhone",
+        category: "phones",
         thumbnail: "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
         images: [
           "https://i.dummyjson.com/data/products/10/1.jpg",
@@ -726,4 +726,32 @@ export const HP_PRODUCT = {
     url: "https://dummyjson.com/products/search?q=hp",
   },
   request: {},
+};
+
+export const goodProductDetails = {
+  id: 1,
+  title: "iPhone 9",
+  description: "An apple mobile which is nothing like apple",
+  price: 549,
+  discountPercentage: 12.96,
+  rating: 4.69,
+  stock: 94,
+  brand: "Apple",
+  category: "smartphones",
+  thumbnail: "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+  images: ["...", "...", "..."],
+};
+
+export const invalidProductDetails = {
+  id: 1,
+  title: "iPhone 9",
+  description: "An apple mobile which is nothing like apple",
+  price: 549,
+  discountPercentage: 12.96,
+  rating: 4.69,
+  stock: 94,
+  brand: "Apple",
+  category: "smartphones",
+  thumbnail: "",
+  images: ["...", "...", "..."],
 };
