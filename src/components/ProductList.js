@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Fragment } from "react";
 import { Card } from "semantic-ui-react";
 import { GENERAL_LABELS } from "../translations/english";
@@ -27,5 +27,5 @@ function ProductList(props) {
 
 export default ProductList;
 ProductList.propTypes = {
-  products: PropTypes.array
+  products: PropTypes.array,
 };

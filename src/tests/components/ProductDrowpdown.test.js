@@ -19,7 +19,7 @@ describe("ProductList", () => {
       }
     });
   });
-  it("when product data is existing, then display product cards", async () => {
+  it("when product data is existing, then display categories", async () => {
     const filterByCategory = (category) => {
       console.log("filterByCategory was triggered");
     };
@@ -29,7 +29,8 @@ describe("ProductList", () => {
       ></ProductCategoryDropDown>
     );
 
-    expect(await screen.findByText("laptops")).toBeVisible();
+    expect(await screen.findByText(CATEGORIES.data[2])).toBeVisible();
+    expect(await screen.findByText(CATEGORIES.data[9])).toBeVisible();
   });
 
   it("after initial load, then calls api products/categories", async () => {
