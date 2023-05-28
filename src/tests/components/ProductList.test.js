@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import { PRODUCT_MOCK_DATA } from "../mockdata/ProductMockData";
 import ProductList from "../../components/ProductList";
 import { GENERAL_LABELS } from "../../translations/english";
+import { PRODUCT_MOCK_DATA } from "../mockdata/ProductMockData";
 
 /**
  * just testing the 2 behaviour for 'now'

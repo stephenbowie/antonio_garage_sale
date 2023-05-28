@@ -1,9 +1,9 @@
-import axios from 'axios'
+import axios from "axios";
 
 /**
  *
  *  @author: Antonio Villasenor
- *  @fileOverview : API layer for products
+ *  @fileOverview : API layer for products (see product details in ProductMockData.js)
  *  @const ProductApi
  *
  */
@@ -13,7 +13,7 @@ export const ProductApi = {
   /**
    *  list of categories of products
    *  @params none
-   *  @returns Promise possible data [''] array of product objects
+   *  @returns promise[]string
    */
   category: () => {
     return axios.get(baseURL + "/categories");
@@ -22,7 +22,7 @@ export const ProductApi = {
   /**
    *  list of product searched by name
    *  @params productName : string
-   *  @returns Promise possible data [''] array of product objects
+   *  @returns promise[]products
    */
   product: (productName) => {
     return axios.get(baseURL + `/search?q=${productName}`);
@@ -32,7 +32,7 @@ export const ProductApi = {
    * list of paginated products
    * @param {*} skip integer  - a number that wherein the iteration starts in a paginated result
    * @param {*} limit - integer - number of elements to return
-   * @returns Promise possible data [''] array of product objects
+   * @returns promise[]products
    */
   paginatedProducts: (skip, limit) => {
     return axios.get(baseURL + `?limit=${limit}&skip${skip}`);
@@ -41,42 +41,9 @@ export const ProductApi = {
   /**
    * list of product searched by category
    * @param {*} category - a string to search via category name
-   * @returns Promise possible data [''] array of product objects
+   * @returns promise[]products
    */
   productByCategory: (category) => {
     return axios.get(baseURL + `/category/${category}?`);
   },
 };
-
-/**
- * sample of a product data
- * {
-            "id": 6,
-            "title": "MacBook Pro",
-            "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-            "price": 1749,
-            "discountPercentage": 11.02,
-            "rating": 4.57,
-            "stock": 83,
-            "brand": "Apple",
-            "category": "laptops",
-            "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-            "images": [
-                "https://i.dummyjson.com/data/products/6/1.png",
-                "https://i.dummyjson.com/data/products/6/2.jpg",
-                "https://i.dummyjson.com/data/products/6/3.png",
-                "https://i.dummyjson.com/data/products/6/4.jpg"
-            ]
-        }
- * 
- * 
- * sample of a promise product data
- * 
- * {
-     [...product data above],
-        "total": 100,
-        "skip": 0,
-        "limit": 10
-      }
-  
- */

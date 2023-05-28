@@ -541,138 +541,189 @@ export const PAGINATED_VALID_LIST = {
 };
 
 export const LIST_CATEGORIED = {
-  "data": {
-      "products": [
-          {
-              "id": 16,
-              "title": "Hyaluronic Acid Serum",
-              "description": "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
-              "price": 19,
-              "discountPercentage": 13.31,
-              "rating": 4.83,
-              "stock": 110,
-              "brand": "L'Oreal Paris",
-              "category": "skincare",
-              "thumbnail": "https://i.dummyjson.com/data/products/16/thumbnail.jpg",
-              "images": [
-                  "https://i.dummyjson.com/data/products/16/1.png",
-                  "https://i.dummyjson.com/data/products/16/2.webp",
-                  "https://i.dummyjson.com/data/products/16/3.jpg",
-                  "https://i.dummyjson.com/data/products/16/4.jpg",
-                  "https://i.dummyjson.com/data/products/16/thumbnail.jpg"
-              ]
-          },
-          {
-              "id": 17,
-              "title": "Tree Oil 30ml",
-              "description": "Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,",
-              "price": 12,
-              "discountPercentage": 4.09,
-              "rating": 4.52,
-              "stock": 78,
-              "brand": "Hemani Tea",
-              "category": "skincare",
-              "thumbnail": "https://i.dummyjson.com/data/products/17/thumbnail.jpg",
-              "images": [
-                  "https://i.dummyjson.com/data/products/17/1.jpg",
-                  "https://i.dummyjson.com/data/products/17/2.jpg",
-                  "https://i.dummyjson.com/data/products/17/3.jpg",
-                  "https://i.dummyjson.com/data/products/17/thumbnail.jpg"
-              ]
-          },
-          {
-              "id": 18,
-              "title": "Oil Free Moisturizer 100ml",
-              "description": "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
-              "price": 40,
-              "discountPercentage": 13.1,
-              "rating": 4.56,
-              "stock": 88,
-              "brand": "Dermive",
-              "category": "skincare",
-              "thumbnail": "https://i.dummyjson.com/data/products/18/thumbnail.jpg",
-              "images": [
-                  "https://i.dummyjson.com/data/products/18/1.jpg",
-                  "https://i.dummyjson.com/data/products/18/2.jpg",
-                  "https://i.dummyjson.com/data/products/18/3.jpg",
-                  "https://i.dummyjson.com/data/products/18/4.jpg",
-                  "https://i.dummyjson.com/data/products/18/thumbnail.jpg"
-              ]
-          },
-          {
-              "id": 19,
-              "title": "Skin Beauty Serum.",
-              "description": "Product name: rorec collagen hyaluronic acid white face serum riceNet weight: 15 m",
-              "price": 46,
-              "discountPercentage": 10.68,
-              "rating": 4.42,
-              "stock": 54,
-              "brand": "ROREC White Rice",
-              "category": "skincare",
-              "thumbnail": "https://i.dummyjson.com/data/products/19/thumbnail.jpg",
-              "images": [
-                  "https://i.dummyjson.com/data/products/19/1.jpg",
-                  "https://i.dummyjson.com/data/products/19/2.jpg",
-                  "https://i.dummyjson.com/data/products/19/3.png",
-                  "https://i.dummyjson.com/data/products/19/thumbnail.jpg"
-              ]
-          },
-          {
-              "id": 20,
-              "title": "Freckle Treatment Cream- 15gm",
-              "description": "Fair & Clear is Pakistan's only pure Freckle cream which helpsfade Freckles, Darkspots and pigments. Mercury level is 0%, so there are no side effects.",
-              "price": 70,
-              "discountPercentage": 16.99,
-              "rating": 4.06,
-              "stock": 140,
-              "brand": "Fair & Clear",
-              "category": "skincare",
-              "thumbnail": "https://i.dummyjson.com/data/products/20/thumbnail.jpg",
-              "images": [
-                  "https://i.dummyjson.com/data/products/20/1.jpg",
-                  "https://i.dummyjson.com/data/products/20/2.jpg",
-                  "https://i.dummyjson.com/data/products/20/3.jpg",
-                  "https://i.dummyjson.com/data/products/20/4.jpg",
-                  "https://i.dummyjson.com/data/products/20/thumbnail.jpg"
-              ]
-          }
-      ],
-      "total": 5,
-      "skip": 0,
-      "limit": 5
-  },
-  "status": 200,
-  "statusText": "",
-  "headers": {
-      "content-type": "application/json; charset=utf-8"
-  },
-  "config": {
-      "transitional": {
-          "silentJSONParsing": true,
-          "forcedJSONParsing": true,
-          "clarifyTimeoutError": false
+  data: {
+    products: [
+      {
+        id: 36,
+        title: "Sleeve Shirt Womens",
+        description:
+          "Cotton Solid Color Professional Wear Sleeve Shirt Womens Work Blouses Wholesale Clothing Casual Plain Custom Top OEM Customized",
+        price: 90,
+        discountPercentage: 10.89,
+        rating: 4.26,
+        stock: 39,
+        brand: "Professional Wear",
+        category: "tops",
+        thumbnail: "https://i.dummyjson.com/data/products/36/thumbnail.jpg",
+        images: [
+          "https://i.dummyjson.com/data/products/36/1.jpg",
+          "https://i.dummyjson.com/data/products/36/2.webp",
+          "https://i.dummyjson.com/data/products/36/3.webp",
+          "https://i.dummyjson.com/data/products/36/4.jpg",
+          "https://i.dummyjson.com/data/products/36/thumbnail.jpg",
+        ],
       },
-      "adapter": [
-          "xhr",
-          "http"
-      ],
-      "transformRequest": [
-          null
-      ],
-      "transformResponse": [
-          null
-      ],
-      "timeout": 0,
-      "xsrfCookieName": "XSRF-TOKEN",
-      "xsrfHeaderName": "X-XSRF-TOKEN",
-      "maxContentLength": -1,
-      "maxBodyLength": -1,
-      "env": {},
-      "headers": {
-          "Accept": "application/json, text/plain, */*"
+      {
+        id: 37,
+        title: "ank Tops for Womens/Girls",
+        description:
+          "PACK OF 3 CAMISOLES ,VERY COMFORTABLE SOFT COTTON STUFF, COMFORTABLE IN ALL FOUR SEASONS",
+        price: 50,
+        discountPercentage: 12.05,
+        rating: 4.52,
+        stock: 107,
+        brand: "Soft Cotton",
+        category: "tops",
+        thumbnail: "https://i.dummyjson.com/data/products/37/thumbnail.jpg",
+        images: [
+          "https://i.dummyjson.com/data/products/37/1.jpg",
+          "https://i.dummyjson.com/data/products/37/2.jpg",
+          "https://i.dummyjson.com/data/products/37/3.jpg",
+          "https://i.dummyjson.com/data/products/37/4.jpg",
+          "https://i.dummyjson.com/data/products/37/thumbnail.jpg",
+        ],
       },
-      "method": "get",
-      "url": "https://dummyjson.com/products/category/skincare?"
+      {
+        id: 38,
+        title: "sublimation plain kids tank",
+        description: "sublimation plain kids tank tops wholesale",
+        price: 100,
+        discountPercentage: 11.12,
+        rating: 4.8,
+        stock: 20,
+        brand: "Soft Cotton",
+        category: "tops",
+        thumbnail: "https://i.dummyjson.com/data/products/38/thumbnail.jpg",
+        images: [
+          "https://i.dummyjson.com/data/products/38/1.png",
+          "https://i.dummyjson.com/data/products/38/2.jpg",
+          "https://i.dummyjson.com/data/products/38/3.jpg",
+          "https://i.dummyjson.com/data/products/38/4.jpg",
+        ],
+      },
+      {
+        id: 39,
+        title: "Women Sweaters Wool",
+        description:
+          "2021 Custom Winter Fall Zebra Knit Crop Top Women Sweaters Wool Mohair Cos Customize Crew Neck Women' S Crop Top Sweater",
+        price: 600,
+        discountPercentage: 17.2,
+        rating: 4.55,
+        stock: 55,
+        brand: "Top Sweater",
+        category: "tops",
+        thumbnail: "https://i.dummyjson.com/data/products/39/thumbnail.jpg",
+        images: [
+          "https://i.dummyjson.com/data/products/39/1.jpg",
+          "https://i.dummyjson.com/data/products/39/2.jpg",
+          "https://i.dummyjson.com/data/products/39/3.jpg",
+          "https://i.dummyjson.com/data/products/39/4.jpg",
+          "https://i.dummyjson.com/data/products/39/thumbnail.jpg",
+        ],
+      },
+      {
+        id: 40,
+        title: "women winter clothes",
+        description:
+          "women winter clothes thick fleece hoodie top with sweat pantjogger women sweatsuit set joggers pants two piece pants set",
+        price: 57,
+        discountPercentage: 13.39,
+        rating: 4.91,
+        stock: 84,
+        brand: "Top Sweater",
+        category: "tops",
+        thumbnail: "https://i.dummyjson.com/data/products/40/thumbnail.jpg",
+        images: [
+          "https://i.dummyjson.com/data/products/40/1.jpg",
+          "https://i.dummyjson.com/data/products/40/2.jpg",
+        ],
+      },
+    ],
+    total: 5,
+    skip: 0,
+    limit: 5,
   },
-  "request": {}
-}
+  status: 200,
+  statusText: "",
+  headers: {
+    "content-type": "application/json; charset=utf-8",
+  },
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+    },
+    adapter: ["xhr", "http"],
+    transformRequest: [null],
+    transformResponse: [null],
+    timeout: 0,
+    xsrfCookieName: "XSRF-TOKEN",
+    xsrfHeaderName: "X-XSRF-TOKEN",
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: {},
+    headers: {
+      Accept: "application/json, text/plain, */*",
+    },
+    method: "get",
+    url: "https://dummyjson.com/products/category/tops?",
+  },
+  request: {},
+};
+
+export const HP_PRODUCT = {
+  data: {
+    products: [
+      {
+        id: 10,
+        title: "iPhone 9",
+        description: "iPhone 9",
+        price: 1099,
+        discountPercentage: 6.18,
+        rating: 4.43,
+        stock: 89,
+        brand: "HP Pavilion",
+        category: "laptops",
+        thumbnail: "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+        images: [
+          "https://i.dummyjson.com/data/products/10/1.jpg",
+          "https://i.dummyjson.com/data/products/10/2.jpg",
+          "https://i.dummyjson.com/data/products/10/3.jpg",
+          "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+        ],
+      },
+    ],
+    total: 1,
+    skip: 0,
+    limit: 1,
+  },
+  status: 200,
+  statusText: "",
+  headers: {
+    "content-length": "593",
+    "content-type": "application/json; charset=utf-8",
+  },
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+    },
+    adapter: ["xhr", "http"],
+    transformRequest: [null],
+    transformResponse: [null],
+    timeout: 0,
+    xsrfCookieName: "XSRF-TOKEN",
+    xsrfHeaderName: "X-XSRF-TOKEN",
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: {},
+    headers: {
+      Accept: "application/json, text/plain, */*",
+    },
+    method: "get",
+    url: "https://dummyjson.com/products/search?q=hp",
+  },
+  request: {},
+};

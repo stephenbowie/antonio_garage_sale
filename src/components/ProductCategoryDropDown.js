@@ -1,32 +1,41 @@
+import PropTypes from "prop-types";
 import useCategoryHook from "../hooks/useCategoryHook";
-import PropTypes from 'prop-types';
+import { PRODUCT_LABELS } from "../translations/english";
 
 /**
- * drop down that displays all the product categories
+ * drop down that displays all the product categories, specific for https://dummyjson.com/products/category
  * @param func
  * @returns ProductCategoryDropDown
  */
 function ProductCategoryDropDown(props) {
   const categoryOptions = useCategoryHook();
 
-  return (
-    <select data-testid="dropdown"
-      className="ui dropdown"
-      onChange={(e) => {
-        props.handleSelect(e.target.value);
-      }}
-    >
-      {categoryOptions.map((category) => {
-        return (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        );
-      })}
-    </select>
-  );
+  function dropdown() {
+    if (categoryOptions.length > 0) {
+      return (
+        <select
+          data-testid="dropdown"
+          className="ui dropdown"
+          onChange={(e) => {
+            props.handleSelect(e.target.value);
+          }}
+        >
+          {categoryOptions.map((category) => {
+            return (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            );
+          })}
+        </select>
+      );
+    }
+    return <div>{PRODUCT_LABELS.filters.dropDownNotAvailable}</div>;
+  }
+
+  return dropdown();
 }
 export default ProductCategoryDropDown;
 ProductCategoryDropDown.propTypes = {
-  product: PropTypes.func
+  product: PropTypes.func,
 };

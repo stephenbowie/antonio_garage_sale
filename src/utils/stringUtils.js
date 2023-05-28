@@ -1,3 +1,10 @@
+/**
+ *
+ * utility class manipulating string
+ *
+ * @param {*} str
+ * @returns func
+ */
 export const isEmptyOrUndefined = (str) => {
   if (
     typeof str == "undefined" ||

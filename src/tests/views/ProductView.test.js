@@ -1,13 +1,14 @@
-import {
-  render,
-  screen,
-  cleanup,
-  fireEvent,
-} from "@testing-library/react";
-import ProductView from "../../views/ProductView";
+import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import axiosMock from "axios";
-import { PAGINATED_VALID_LIST, CATEGORIES, LIST_CATEGORIED } from "../mockdata/ProductMockData";
-import { async } from "q";
+import { GENERAL_LABELS, PRODUCT_LABELS } from "../../translations/english";
+import ProductView from "../../views/ProductView";
+import {
+  CATEGORIES,
+  HP_PRODUCT,
+  LIST_CATEGORIED,
+  PAGINATED_VALID_LIST,
+} from "../mockdata/ProductMockData";
 
 jest.mock("axios");
 describe("ProductView", () => {
@@ -19,8 +20,10 @@ describe("ProductView", () => {
           return Promise.resolve(CATEGORIES);
         case "https://dummyjson.com/products?limit=20&skip0":
           return Promise.resolve(PAGINATED_VALID_LIST);
-        case "https://dummyjson.com/products/category/skincare?":
-          return Promise.resolve(LIST_CATEGORIED)
+        case "https://dummyjson.com/products/category/tops?":
+          return Promise.resolve(LIST_CATEGORIED);
+        case "https://dummyjson.com/products/search?q=iphone":
+          return Promise.resolve(HP_PRODUCT);
         default:
           return Promise.reject(new Error("not found"));
       }
@@ -34,25 +37,72 @@ describe("ProductView", () => {
       await screen.findByText("Freckle Treatment Cream- 15gm")
     ).toBeVisible();
     expect(await axiosMock.get).toHaveBeenCalledTimes(2);
-    
   });
 
-  it("when screen was loaded and some products are shown, drop down filter change triggers, then /category endpoint has been called and only selected products are shown", async() => {
+  it("when screen was loaded and some products are shown, drop down filter change triggers, then /category/tops? endpoint has been called and only selected products are shown", async () => {
     const { getByTestId } = render(<ProductView />);
     expect(await screen.findByText("iPhone 9")).toBeVisible();
-    expect(await screen.findByText("Freckle Treatment Cream- 15gm")).toBeVisible();
+    expect(
+      await screen.findByText("Freckle Treatment Cream- 15gm")
+    ).toBeVisible();
     expect(await axiosMock.get).toHaveBeenCalledTimes(2);
 
-    expect(await screen.findByText("iPhone 9")).toBeVisible();
-    const dropdown = getByTestId('dropdown');
+    expect(await screen.findByText("tops")).toBeVisible();
+    const dropdown = getByTestId("dropdown");
     expect(await dropdown).toBeVisible();
+    userEvent.selectOptions(
+      dropdown,
+      screen.getByRole("option", { name: "tops" })
+    );
+    expect(await screen.findByText("Women Sweaters Wool")).toBeVisible();
+    expect(await screen.findByText("women winter clothes")).toBeVisible();
   });
 
-  it("when name input change, then /q?title= endpoint has been called and only products with same name are shown", () => {
-    expect(true).toBeTruthy();
+  it("when name input change, then /q?title= endpoint has been called and only products with same name are shown", async () => {
+    const { getByTestId } = render(<ProductView />);
+    expect(await screen.findByText("iPhone 9")).toBeVisible();
+    expect(
+      await screen.findByText("Freckle Treatment Cream- 15gm")
+    ).toBeVisible();
+    expect(await axiosMock.get).toHaveBeenCalledTimes(2);
+    const filterName = getByTestId("filterName");
+    expect(await filterName).toBeVisible();
+
+    userEvent.type(filterName, "iphone");
+    expect(await screen.findByText("iPhone 9")).toBeVisible();
   });
 
   it("when looking at bottom of screen, then product api is called again, loading message appears, and another 20 products will be shown", () => {
     expect(true).toBeTruthy();
+  });
+});
+
+describe("apis are down", () => {
+  afterEach(cleanup);
+  beforeEach(() => {
+    axiosMock.get.mockImplementation((url) => {
+      switch (url) {
+        case "https://dummyjson.com/products/categories":
+          return Promise.reject(new Error("not found"));
+        case "https://dummyjson.com/products?limit=20&skip0":
+          return Promise.reject(new Error("not found"));
+        default:
+          return Promise.reject(new Error("not found"));
+      }
+    });
+  });
+  it("when category service is down, then display filter not available and expect product and category endpoint called", async () => {
+    render(<ProductView />);
+    expect(await axiosMock.get).toHaveBeenCalledTimes(2);
+    expect(
+      await screen.findByText(PRODUCT_LABELS.filters.dropDownNotAvailable)
+    ).toBeVisible();
+  });
+  it("when product service is down, then display no available data and expect product and category endpoint called", async () => {
+    render(<ProductView />);
+    expect(await axiosMock.get).toHaveBeenCalledTimes(2);
+    expect(
+      await screen.findByText(GENERAL_LABELS.NO_AVAILABLE_DATA)
+    ).toBeVisible();
   });
 });

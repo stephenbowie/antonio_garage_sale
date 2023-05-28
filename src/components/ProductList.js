@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import { Fragment } from "react";
 import { Card } from "semantic-ui-react";
 import { GENERAL_LABELS } from "../translations/english";
 import ProductCard from "./ProductCard";
-import PropTypes from 'prop-types';
 
 /**
  * drop down that displays products in a card group manner

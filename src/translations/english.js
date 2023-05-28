@@ -12,18 +12,18 @@ export const PRODUCT_LABELS = {
     brand: "brand",
     category: "category",
     userRating: "User Rating",
-    productThumbNailAvailable: "no product thumbnail available"
+    productThumbNailAvailable: "no product thumbnail available",
   },
   filters: {
-    searchByCategory : "Search by category:",
+    searchByCategory: "Search by category:",
     searchByTitle: "Search by product title",
-    removeFilters: "remove filters"
-  }
+    removeFilters: "remove filters",
+    dropDownNotAvailable: "drop down filter not available",
+  },
 };
 
-
 export const GENERAL_LABELS = {
-  NO_AVAILABLE_DATA : "no available data",
-  JUST_A_SECOND : "Just one second",
-  FETCHING_CONTENT: "We are fetching that content for you."
-}
+  NO_AVAILABLE_DATA: "no available data",
+  JUST_A_SECOND: "Just one second",
+  FETCHING_CONTENT: "We are fetching that content for you.",
+};

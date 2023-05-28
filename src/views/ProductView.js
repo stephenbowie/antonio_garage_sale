@@ -1,72 +1,62 @@
-import { Container } from "semantic-ui-react";
-import { useEffect, useState } from "react";
-import { Card } from "semantic-ui-react";
+import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import {
-  Segment,
-  Input,
-  Header,
-  Message,
-  Icon,
   Button,
+  Card,
+  Container,
+  Header,
+  Icon,
+  Input,
+  Message,
+  Segment,
 } from "semantic-ui-react";
-import { ProductApi } from "../api/product-api";
-import ProductList from "../components/ProductList";
 import ProductCategoryDropDown from "../components/ProductCategoryDropDown";
-import { PRODUCT_LABELS, GENERAL_LABELS } from "../translations/english";
+import ProductList from "../components/ProductList";
+import useProductHook from "../hooks/useProductHook";
+import { GENERAL_LABELS, PRODUCT_LABELS } from "../translations/english";
 
 /**
- * 
- *  @author: Antonio Villasenor 
+ *
+ *  @author: Antonio Villasenor
  *  @fileOverview : product view displays products and loads more data when you scroll end of page
  *  @module ProductView
- *  @todo for now since this is not a reusable component, this is a proper implementation with usage of <InfiniteScroll> 
- *          but to make this a reusable component, see possible implementation below, if we want to deprecate usage of <InfiniteScroll>
+ *  @todo to make this a reusable component, see possible implementation below, if we want to deprecate usage of <InfiniteScroll>
  */
 function ProductView() {
   let DATA_PAGE_INCREMENT = 20;
-  let [products, setProducts] = useState([]);
+  let {
+    products,
+    filterProductsByCategory,
+    searchByName,
+    setPaginatedProductList,
+    totalFromLastCalledApi,
+  } = useProductHook();
+
   let [limit, setLimit] = useState(DATA_PAGE_INCREMENT);
-  let [canLoadMoreDate, setCanLoadMoreData] = useState(false);
-
-  useEffect(() => {
-    initialize();
-  }, []);
-
-  
-  const initialize = () => {
-    ProductApi.paginatedProducts(0, 20).then((res) => {
-      setProducts(res.data.products);
-    });
-    setCanLoadMoreData(true);
-  };
+  let [canLoadMoreDate, setCanLoadMoreData] = useState(true);
 
   const loadMoreProducts = () => {
     setTimeout(() => {
-      ProductApi.paginatedProducts(limit, limit + DATA_PAGE_INCREMENT).then(
-        (res) => {
-          
-          setProducts(res.data.products);
-          setCanLoadMoreData(products.length < res.data.total);
-        }
-      );
+      setPaginatedProductList(limit, limit + DATA_PAGE_INCREMENT);
+      setCanLoadMoreData(products.length < totalFromLastCalledApi);
       setLimit(limit + DATA_PAGE_INCREMENT);
     }, 1500);
   };
 
   const filterByCategory = (category) => {
-    ProductApi.productByCategory(category).then((res) => {
-      console.log('product categoried', res)
-      setProducts(res.data.products);
-    });
+    filterProductsByCategory(category);
     setCanLoadMoreData(false);
   };
 
   const searchByProductName = (productName) => {
-    ProductApi.product(productName).then((res) => {
-      setProducts(res.data.products);
-    });
+    searchByName(productName);
     setCanLoadMoreData(false);
+  };
+
+  const removeFilters = () => {
+    setLimit(DATA_PAGE_INCREMENT);
+    setPaginatedProductList(0, DATA_PAGE_INCREMENT);
+    setCanLoadMoreData(true);
   };
 
   return (
@@ -82,6 +72,8 @@ function ProductView() {
             </div>
             <div>
               <Input
+                type="text"
+                data-testid="filterName"
                 placeholder={PRODUCT_LABELS.filters.searchByTitle}
                 onChange={(e) => {
                   searchByProductName(e.target.value);
@@ -91,7 +83,7 @@ function ProductView() {
             <div>
               <Button
                 onClick={() => {
-                  initialize();
+                  removeFilters();
                 }}
               >
                 {PRODUCT_LABELS.filters.removeFilters}
@@ -100,7 +92,7 @@ function ProductView() {
           </Card.Content>
         </Segment>
       </Container>
-      <div data-testid="end" ></div>
+      <div data-testid="end"></div>
       <Container textAlign="left" fluid>
         <InfiniteScroll
           dataLength={products.length}
