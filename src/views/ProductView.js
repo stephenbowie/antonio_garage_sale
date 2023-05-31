@@ -97,6 +97,7 @@ function ProductView() {
         <InfiniteScroll
           dataLength={products.length}
           next={loadMoreProducts}
+          height={700}
           hasMore={canLoadMoreDate}
           loader={
             <Message icon>
