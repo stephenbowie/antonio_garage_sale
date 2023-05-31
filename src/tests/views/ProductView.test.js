@@ -24,7 +24,7 @@ describe("ProductView", () => {
   });
 
   it("when screen was loaded and some products are shown, drop down filter change triggers, then /category/tops? endpoint has been called and only selected products are shown", async () => {
-    const { getByTestId } = render(<ProductView />);
+    render(<ProductView />);
     expect(await screen.findByText("iPhone 9")).toBeVisible();
     expect(
       await screen.findByText("Freckle Treatment Cream- 15gm")
@@ -32,7 +32,7 @@ describe("ProductView", () => {
     expect(await axiosMock.get).toHaveBeenCalledTimes(2);
 
     expect(await screen.findByText("tops")).toBeVisible();
-    const dropdown = getByTestId("dropdown");
+    const dropdown = screen.getByTestId("dropdown");
     expect(await dropdown).toBeVisible();
     userEvent.selectOptions(
       dropdown,
@@ -43,13 +43,13 @@ describe("ProductView", () => {
   });
 
   it("when name input change, then /q?title= endpoint has been called and only products with same name are shown", async () => {
-    const { getByTestId } = render(<ProductView />);
+    render(<ProductView />);
     expect(await screen.findByText("iPhone 9")).toBeVisible();
     expect(
       await screen.findByText("Freckle Treatment Cream- 15gm")
     ).toBeVisible();
     expect(await axiosMock.get).toHaveBeenCalledTimes(2);
-    const filterName = getByTestId("filterName");
+    const filterName = screen.getByTestId("filterName");
     expect(await filterName).toBeVisible();
 
     userEvent.type(filterName, "iphone");

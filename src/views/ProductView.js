@@ -20,7 +20,8 @@ import { GENERAL_LABELS, PRODUCT_LABELS } from "../translations/english";
  *  @author: Antonio Villasenor
  *  @fileOverview : product view displays products and loads more data when you scroll end of page
  *  @module ProductView
- *  @todo to make this a reusable component, see possible implementation below, if we want to deprecate usage of <InfiniteScroll>
+ *  @todo to make this a reusable component, see possible implementation below, if we want to deprecate usage of <InfiniteScroll>, 
+ *      make some things into props if to be reused (like height, data page increment and etc..)
  */
 function ProductView() {
   let DATA_PAGE_INCREMENT = 20;

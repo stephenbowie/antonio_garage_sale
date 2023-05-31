@@ -5,7 +5,7 @@ import { PRODUCT_LABELS } from "../../translations/english";
 import { CATEGORIES } from "../mockdata/ProductMockData";
 
 jest.mock("axios");
-describe("ProductList", () => {
+describe("ProductList when running smoothly", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -47,12 +47,14 @@ describe("ProductList", () => {
   });
 });
 
-describe("ProductList", () => {
+describe("ProductList when some services are down", () => {
   afterEach(cleanup);
   beforeEach(() => {
     axiosMock.get.mockImplementation((url) => {
       switch (url) {
         case "https://dummyjson.com/products/categories":
+          return Promise.reject(new Error("not found"));
+        default:
           return Promise.reject(new Error("not found"));
       }
     });

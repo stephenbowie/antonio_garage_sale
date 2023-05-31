@@ -1,6 +1,6 @@
 import axiosMock from "axios";
+import { CATEGORIES, IPHONE_PRODUCT, LIST_CATEGORIED, PAGINATED_VALID_LIST } from "../mockdata/ProductMockData";
 jest.mock("axios");
-import { PAGINATED_VALID_LIST, LIST_CATEGORIED, CATEGORIES, IPHONE_PRODUCT } from "../mockdata/ProductMockData";
 
 export function mockProductApi_RETURN_SUCCESSFUL(){
     axiosMock.get.mockImplementation((url) => {
