@@ -1,9 +1,12 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axiosMock from "axios";
 import { GENERAL_LABELS, PRODUCT_LABELS } from "../../translations/english";
 import ProductView from "../../views/ProductView";
-import { mockProductApi_RETURN_SUCCESSFUL, mockProductApi_RETURN_FAIL } from "../mockapi/api_mock_product";
+import {
+  mockProductApi_RETURN_FAIL,
+  mockProductApi_RETURN_SUCCESSFUL,
+} from "../mockapi/api_mock_product";
 
 jest.mock("axios");
 describe("ProductView", () => {
@@ -56,7 +59,7 @@ describe("ProductView", () => {
     expect(await screen.findByText("iPhone 9")).toBeVisible();
   });
 
-  it("when looking at bottom of screen, then product api is called again, loading message appears, and another 20 products will be shown by calling paginated product api", async() => {
+  it("when looking at bottom of screen, then product api is called again, loading message appears, and another 20 products will be shown by calling paginated product api", async () => {
     render(<ProductView />);
     expect(await screen.findByText("iPhone 9")).toBeVisible();
     expect(
@@ -64,7 +67,9 @@ describe("ProductView", () => {
     ).toBeVisible();
     expect(await axiosMock.get).toHaveBeenCalledTimes(2);
     const scroll = screen.getByTestId("scroll");
-    await scroll.addEventListener('scroll', () => { /* some callback */ });
+    await scroll.addEventListener("scroll", () => {
+      /* some callback */
+    });
     await fireEvent.scroll(scroll, { target: { scrollY: 900 } });
     await setTimeout(() => {
       //do nothing just wait for loading to be finished

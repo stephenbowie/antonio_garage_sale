@@ -5,7 +5,7 @@ import { PRODUCT_LABELS } from "../../translations/english";
 import { CATEGORIES } from "../mockdata/ProductMockData";
 
 jest.mock("axios");
-describe("ProductList when running smoothly", () => {
+describe("ProductCategoryDropDown displays correctly", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -47,7 +47,7 @@ describe("ProductList when running smoothly", () => {
   });
 });
 
-describe("ProductList when some services are down", () => {
+describe("ProductCategoryDropDown with issues", () => {
   afterEach(cleanup);
   beforeEach(() => {
     axiosMock.get.mockImplementation((url) => {

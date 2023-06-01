@@ -7,7 +7,9 @@ const useCategoryHook = () => {
       .then((res) => {
         setCategoryOptions(res.data);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        
+      });
   }, []);
 
   return categoryOptions;

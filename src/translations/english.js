@@ -13,6 +13,7 @@ export const PRODUCT_LABELS = {
     category: "category",
     userRating: "User Rating",
     productThumbNailAvailable: "no product thumbnail available",
+    noProductDetailsDefined: "no product data, unable to display card",
   },
   filters: {
     searchByCategory: "Search by category:",

@@ -3,9 +3,6 @@ import ProductList from "../../components/ProductList";
 import { GENERAL_LABELS } from "../../translations/english";
 import { PRODUCT_MOCK_DATA } from "../mockdata/ProductMockData";
 
-/**
- * just testing the 2 behaviour for 'now'
- */
 describe("ProductList", () => {
   it("display product cards when product data are existing", () => {
     render(
@@ -14,8 +11,9 @@ describe("ProductList", () => {
         itemsPerRow={4}
       ></ProductList>
     );
-    const iphone8Label = screen.getByText("iPhone 8");
-    expect(iphone8Label).toBeInTheDocument();
+    expect(
+      screen.getByText(PRODUCT_MOCK_DATA.LIST_VALID[0].title)
+    ).toBeInTheDocument();
   });
 
   it("display label no products available when the product list is empty", () => {
@@ -25,7 +23,8 @@ describe("ProductList", () => {
         itemsPerRow={4}
       ></ProductList>
     );
-    const nodata = screen.getByText(GENERAL_LABELS.NO_AVAILABLE_DATA);
-    expect(nodata).toBeInTheDocument();
+    expect(
+      screen.getByText(GENERAL_LABELS.NO_AVAILABLE_DATA)
+    ).toBeInTheDocument();
   });
 });

@@ -12,7 +12,7 @@ import ProductCard from "./ProductCard";
 function ProductList(props) {
   return (
     <Fragment>
-      {props.products.length === 0 ? (
+      {props.products.length === 0 || props.products === undefined ? (
         <div>{GENERAL_LABELS.NO_AVAILABLE_DATA}</div>
       ) : (
         <Card.Group itemsPerRow={props.itemsPerRow}>

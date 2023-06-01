@@ -10,6 +10,10 @@ const MAX_RATING = 5; //max rating of a product from what ive seen is 5, this ca
  * @returns ProductCard
  */
 function ProductCard(props) {
+  if (props.product === undefined) {
+    return <div>{PRODUCT_LABELS.card.noProductDetailsDefined}</div>;
+  }
+
   return (
     <Popup
       trigger={
