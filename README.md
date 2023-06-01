@@ -34,6 +34,6 @@ Launches the test runner in the interactive watch mode.
  - uses latest version of react
  - uses semantic ui (for self learning purposes)
  - used https://www.npmjs.com/package/react-infinite-scroll-component?activeTab=readme because i used it before in a project and we have tested this(works really well) and implementation is elegant and simple (see in the comments in the productview if we have to reuse the component)
- - not typescript (not yet needed for the purpose of this project now)
+ - not typescript (not yet needed for the purpose of this project now(it's only me whos a contributor))
 
 
