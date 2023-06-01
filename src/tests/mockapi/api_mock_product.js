@@ -1,5 +1,5 @@
 import axiosMock from "axios";
-import { CATEGORIES, IPHONE_PRODUCT, LIST_CATEGORIED, PAGINATED_VALID_LIST } from "../mockdata/ProductMockData";
+import { CATEGORIES, IPHONE_PRODUCT, LIST_CATEGORIED, PAGINATED_PRODUCT_LIST2, PAGINATED_VALID_LIST } from "../mockdata/ProductMockData";
 jest.mock("axios");
 
 export function mockProductApi_RETURN_SUCCESSFUL(){
@@ -13,6 +13,8 @@ export function mockProductApi_RETURN_SUCCESSFUL(){
             return Promise.resolve(LIST_CATEGORIED);
           case "https://dummyjson.com/products/search?q=iphone":
             return Promise.resolve(IPHONE_PRODUCT);
+          case "https://dummyjson.com/products?limit=40&skip20":
+            return Promise.resolve(PAGINATED_PRODUCT_LIST2); 
           default:
             return Promise.reject(new Error("not found"));
         }

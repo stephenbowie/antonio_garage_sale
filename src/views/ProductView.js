@@ -94,8 +94,9 @@ function ProductView() {
         </Segment>
       </Container>
       <div data-testid="end"></div>
-      <Container textAlign="left" fluid>
+      <Container data-testid="scroll" textAlign="left" fluid>
         <InfiniteScroll
+          
           dataLength={products.length}
           next={loadMoreProducts}
           height={700}

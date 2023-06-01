@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import axiosMock from "axios";
 import { GENERAL_LABELS, PRODUCT_LABELS } from "../../translations/english";
@@ -56,8 +56,20 @@ describe("ProductView", () => {
     expect(await screen.findByText("iPhone 9")).toBeVisible();
   });
 
-  it("when looking at bottom of screen, then product api is called again, loading message appears, and another 20 products will be shown", () => {
-    expect(true).toBeTruthy();
+  it("when looking at bottom of screen, then product api is called again, loading message appears, and another 20 products will be shown by calling paginated product api", async() => {
+    render(<ProductView />);
+    expect(await screen.findByText("iPhone 9")).toBeVisible();
+    expect(
+      await screen.findByText("Freckle Treatment Cream- 15gm")
+    ).toBeVisible();
+    expect(await axiosMock.get).toHaveBeenCalledTimes(2);
+    const scroll = screen.getByTestId("scroll");
+    await scroll.addEventListener('scroll', () => { /* some callback */ });
+    await fireEvent.scroll(scroll, { target: { scrollY: 900 } });
+    await setTimeout(() => {
+      //do nothing just wait for loading to be finished
+    }, 3000);
+    expect(await axiosMock.get).toHaveBeenCalledTimes(2);
   });
 });
 
